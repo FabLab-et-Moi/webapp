@@ -95,6 +95,7 @@ $ouverture_text = ($ouverture == 1) ? 'Ouvert' : 'Fermé';
                         </ul>
                         <!-- Ajoutez ici d'autres informations sur le FabLab si nécessaire -->
                         <a href="#" class="btn btn-primary mt-3">En savoir plus</a>
+                        <a href="#" class="btn btn-primary mt-3">Horaires</a>
                     </div>
                 </div>
             </div>
@@ -113,8 +114,21 @@ $ouverture_text = ($ouverture == 1) ? 'Ouvert' : 'Fermé';
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Mes Compétences</h5>
-                        <p class="card-text">Contenu de la catégorie "Mes Compétences" avec les compétences du compte.</p>
-                        <a href="#" class="btn btn-primary">Voir mes compétences</a>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Design 3D
+                                <span class="badge bg-success">Niveau 1</span>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Programmation Python
+                                <span class="badge bg-success">Niveau 2</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Découpe Laser
+                                <span class="badge bg-success">Niveau 1</span>
+                            </li>
+                            </li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Modifier mes compétences</a>
                     </div>
                 </div>
             </div>
