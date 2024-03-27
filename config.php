@@ -12,11 +12,7 @@ $timezone = "Europe/Paris";
 date_default_timezone_set($timezone);
 
 // database server credientials
-$hostname = 'localhost';
-$hostuser = 'anosendersql';
-$hostpass = 'CyqH1U8hGxtpNBg';
-$dbname = 'anosender';
-$tablename = 'mes';
+
 
 //connection between php and mysql (Do not change this!!!)
 $dbconnect = new mysqli($hostname,$hostuser,$hostpass,$dbname);
