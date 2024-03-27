@@ -1,0 +1,36 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.gradient-bg {
+    height: 100%;
+    background: linear-gradient(to bottom right, #4B0082, #4169E1); /* Vous pouvez ajuster les couleurs du dégradé */
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s infinite alternate;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.centered {
+    max-width: 600px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+.slogan {
+    font-size: 1.5em;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}

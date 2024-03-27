@@ -1,0 +1,94 @@
+body {
+    background: linear-gradient(#ff0084, #33001b);
+    color: #000;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    min-height: 100vh;
+}
+
+.guestbookarea {
+    border: 1px solid #ffffff;
+    background-color: #FFF;
+    margin: 20px auto; /* Ajuster la marge */
+    max-width: 800px; /* Ajuster la largeur maximale */
+    padding: 20px;
+    border-radius: 25px;
+}
+
+#welcome {
+    color: #ff5076;
+    margin: 0;
+    text-align: center;
+}
+
+a {
+    color: #7fffd4;
+    text-decoration: none;
+}
+
+form {
+    margin: 10px;
+}
+
+#sessionmsg {
+    color: #ff2525;
+    margin: 10px;
+}
+
+.inputid,
+.user {
+    color: #ff5076;
+    font-weight: bold;
+}
+
+.inputfields,
+#verification {
+    background-color: #25242c;
+    border-radius: 10px; /* Ajout de "px" */
+    color: #7fffd4;
+    font-size: 14px;
+    width: 100%;
+    padding: 8px; /* Ajout de marge intérieure */
+    border: none; /* Supprimer la bordure */
+    margin-bottom: 10px; /* Ajouter une marge en bas */
+}
+
+#verification {
+    max-width: 100px;
+}
+
+.outputarea {
+    border: 1px solid #dcdcdc;
+    background-color: #eeeeee;
+    border-radius: 25px;
+    margin: 5px;
+    padding: 10px; /* Ajuster la marge intérieure */
+}
+
+.user p span {
+    float: right;
+    font-weight: normal;
+}
+
+.personal_pagination {
+    text-align: center;
+}
+
+.personal_pagination a {
+    display: inline-block;
+    margin: 5px 10px; /* Ajuster la marge */
+    padding: 5px 10px; /* Ajouter de la marge intérieure */
+    color: #7fffd4;
+    background-color: #25242c;
+    border-radius: 5px; /* Ajout de "px" */
+    transition: background-color 0.3s ease; /* Ajout d'une transition de couleur de fond */
+}
+
+.personal_pagination a:hover {
+    background-color: #7fffd4;
+    color: #25242c;
+}
+
+#currentpage {
+    color: #ff5076;
+}
