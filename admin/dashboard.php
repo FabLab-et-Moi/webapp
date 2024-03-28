@@ -98,8 +98,8 @@ if (mysqli_num_rows($result_motd) > 0) {
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <img src="assets/placeholder.jpg" class="card-img-top" alt="Image du FabLab">
-                    <div class="card-body">
-                        <h5 class="card-title">Mon FabLab</h5>
+                    <div class="card-body"> 
+                        <h5 class="card-title">Info FabLab</h5>
                         <ul class="list-group">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Ouverture

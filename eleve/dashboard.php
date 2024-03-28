@@ -91,7 +91,7 @@ if (mysqli_num_rows($result_motd) > 0) {
     </nav>
     
     <!-- MOTD -->
-    <div class="alert alert-secondary" role="alert"><?php echo $motd;?><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+    <div class="alert alert-secondary alert-dismissible fade show" role="alert"><?php echo $motd;?><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
 
     <h1 class="my-5">Bonjour, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b> et bienvenue dans votre espace FabLab.</h1>
 
