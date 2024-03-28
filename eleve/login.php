@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check if username is empty
     // On verifie si le username est vide
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
+        $username_err = "Veuillez entrer votre identifiant.";
     } else{
         $username = trim($_POST["username"]);
     }
@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check if password is empty
     // On vérifie si le mot de passe est vide
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
+        $password_err = "Veuillez entrer votre mot de passe.";
     } else{
         $password = trim($_POST["password"]);
     }
@@ -51,6 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             // Set parameters
             $param_username = $username;
+
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -75,7 +76,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             header("location: dashboard.php");
                         } else{
                             // Password is not valid, display a generic error message
-                            $login_err = "Invalid username or password.";
+                            $login_err = "Vos informations de connexion sont incorrecte.";
                         }
                     }
                 } else{
@@ -103,7 +104,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <!-- En-tête de la page -->
  
     <meta charset="UTF-8">
-    <title>FabLab & Moi | Login</title>
+    <title>FabLab & Moi | Connexion</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="css/login.css" rel="stylesheet">
     <style>
@@ -119,7 +120,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="container-fluid">
                 <a class="navbar-brand">FabLab de Champollion</a>
                 <form class="d-flex">
-                <a href="../index.php" class="btn btn-danger ml-3">Annuler</a>
+                <a href="../index.php" class="btn btn-danger ml-3">Retour</a>
                 </form>
             </div>
             </nav>
@@ -150,7 +151,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
+                <input type="submit" class="btn btn-primary" value="Connexion">
             </div>
             <p>Pas de compte? <a href="register.php">Créer un compte maintenant</a>.</p>
         </form>

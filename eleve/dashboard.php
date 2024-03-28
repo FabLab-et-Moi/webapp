@@ -70,21 +70,22 @@ if (mysqli_num_rows($result_motd) > 0) {
         <div class="container-fluid">
             <a class="navbar-brand">Mon espace FabLab & Moi</a>
             <form class="d-flex">
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Mon Compte
-            </a>
+            </button>
             <ul class="dropdown-menu" >
-                <li><a class="dropdown-item" href="#"></a><?php echo htmlspecialchars($_SESSION["username"]); ?></li>
+                <li><a class="dropdown-item" href="#"></a> <?php echo htmlspecialchars($_SESSION["username"]); ?></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item active" href="#">Mon Espace</a></li>
+                <li><a class="dropdown-item disabled" href="#">Mes Projets</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="reset-password.php">Changer mon mot de passe</a></li>
                 <li><a class="dropdown-item" href="logout.php">Déconnexion</a></li>
             </ul>
             </li>
                 <a href="../index.php" class="btn btn-warning ml-3">Retour au site</a>
-                <a href="logout.php" class="btn btn-danger ml-3">Déconnexion</a>
+               <!-- <a href="logout.php" class="btn btn-danger ml-3">Déconnexion</a> -->
                 
             </form>
         </div>
@@ -93,14 +94,14 @@ if (mysqli_num_rows($result_motd) > 0) {
     <!-- MOTD -->
     <div class="alert alert-secondary alert-dismissible fade show" role="alert"><?php echo $motd;?><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
 
-    <h1 class="my-5">Bonjour, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b> et bienvenue dans votre espace FabLab.</h1>
+    <h1 class="my-5">Bonjour, <b><?php echo htmlspecialchars($_SESSION["username"]); ?> </b> et bienvenue dans votre espace FabLab.</h1>
 
     <div class="container">
         <div class="row">
             <!-- Mon FabLab -->
             <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img src="assets/placeholder.jpg" class="card-img-top" alt="Image du FabLab">
+                    <img src="assets/placeholder.jpg" class="card-img-top ratio-21x9" alt="Image du FabLab">
                     <div class="card-body">
                         <h5 class="card-title">Mon FabLab</h5>
                         <ul class="list-group">

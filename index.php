@@ -49,14 +49,16 @@ include('variableAndFunctions.php');
                 <li><a class="dropdown-item" href="#">Comming soon!</a></li>
             </ul>
             </li>
-            <li class="nav-item">
-                        <a class="nav-link" href="admin/login.php">Connexion Admin.</a>
-                    </li>
-                </ul>
+            <form class="d-flex">
+                <li class="nav-item">
+                            <a class="nav-link btn btn-outline-light border border-danger" href="admin/login.php">Connexion Admin.</a>
+                        </li>
+                    </ul>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-light border border-primary" href="eleve/login.php">Connexion élève</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-light border border-primary" href="eleve/login.php">Connexion élève</a>
+                        </li>
+            </form>
                 </ul>
             </div>
     </div>
