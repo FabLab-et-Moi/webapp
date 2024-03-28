@@ -39,6 +39,19 @@ if (mysqli_num_rows($result_motd) > 0) {
     // Si aucun MOTD n'est disponible, laisser la variable $motd vide
     $motd = "Aucun message du jour";
 }
+
+// Récupérer l'activité depuis la base de données
+$sql_activity = "SELECT activity FROM infofablab";
+$result_activity = mysqli_query($link, $sql_activity);
+
+// Vérifier s'il y a des résultats
+if (mysqli_num_rows($result_activity) > 0) {
+    $row_activity = mysqli_fetch_assoc($result_activity);
+    $activity = $row_activity["activity"];
+} else {
+    // Si aucune activité n'est disponible
+    $activity = "Aucune activité";
+}
 ?>
 
 
@@ -68,7 +81,7 @@ if (mysqli_num_rows($result_motd) > 0) {
 
     <nav class="navbar navbar-light bg-light" id="navbarNavDropdown">
         <div class="container-fluid">
-            <a class="navbar-brand">Mon espace FabLab & Moi</a>
+            <a class="navbar-brand">Mon espace FabLab & Moi (ver 2024.01a)</a>
             <form class="d-flex">
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -97,7 +110,6 @@ if (mysqli_num_rows($result_motd) > 0) {
             <!-- Mon FabLab -->
             <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img src="assets/placeholder.jpg" class="card-img-top" alt="Image du FabLab">
                     <div class="card-body"> 
                         <h5 class="card-title">Info FabLab</h5>
                         <ul class="list-group">
@@ -105,8 +117,79 @@ if (mysqli_num_rows($result_motd) > 0) {
                                 Ouverture
                                 <span id="ouverture-badge" class="badge <?php echo $badge_class; ?>"><?php echo $ouverture_text; ?></span>
                             </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Activité
+                                <span class="badge bg-secondary"><?php echo $activity; ?></span>
+                            </li>
                         </ul>
                         <button id="toggle-ouverture" class="btn btn-primary mt-3">Basculer le statut d'ouverture</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editActivityModal">
+                        Modifier l'activité
+                        </button>
+
+                        <!-- Modal pour modifier activité -->
+                        <div class="modal fade" id="editActivityModal" tabindex="-1" aria-labelledby="editActivityModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editActivityModalLabel">Modifier l'activité</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Formulaire pour modifier activité -->
+                                        <form id="editActivityForm">
+                                            <div class="mb-3">
+                                                <label for="activityTextarea" class="form-label">Changement d'activité</label>
+                                                <textarea class="form-control" id="activityTextarea" rows="1"></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                        <button type="button" class="btn btn-primary" id="saveActivityBtn">Enregistrer les modifications</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            $(document).ready(function() {
+                                // Intercepter le clic sur le bouton "Modifier activité"
+                                $('#editActivityModal').on('show.bs.modal', function(event) {
+                                    // Charger le MOTD actuel dans le formulaire
+                                    $.ajax({
+                                        url: 'get_activity.php', // Script PHP pour récupérer activité depuis la base de données
+                                        type: 'GET',
+                                        success: function(response) {
+                                            $('#activityTextarea').val(response);
+                                        },
+                                        error: function() {
+                                            alert('Une erreur s\'est produite lors du chargement activité.');
+                                        }
+                                    });
+                                });
+
+                                // Intercepter le clic sur le bouton "Enregistrer les modifications"
+                                $('#saveActivityBtn').click(function() {
+                                    var newActivity = $('#activityTextarea').val();
+                                    $.ajax({
+                                        url: 'update_activity.php', // Script PHP pour mettre à jour activité dans la base de données
+                                        type: 'POST',
+                                        data: {
+                                            activity: newActivity
+                                        },
+                                        success: function(response) {
+                                            $('#editActivityModal').modal('hide');
+                                            // Actualiser la page ou effectuer d'autres actions après la mise à jour de l'activité
+                                        },
+                                        error: function() {
+                                            alert('Une erreur s\'est produite lors de la mise à jour activité.');
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+                                            
                     </div>
 
                     <script>
