@@ -94,6 +94,7 @@ if (mysqli_num_rows($result_activity) > 0) {
                 <li><a class="dropdown-item active" href="#">Mon Espace</a></li>
                 <li><a class="dropdown-item disabled" href="#">Mes Projets</a></li>
                 <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#infoModal">Informations</a></li>
                 <li><a class="dropdown-item" href="reset-password.php">Changer mon mot de passe</a></li>
                 <li><a class="dropdown-item" href="logout.php">Déconnexion</a></li>
             </ul>
@@ -161,6 +162,35 @@ if (mysqli_num_rows($result_activity) > 0) {
                                 echo "<p>Aucun horaire disponible pour le moment.</p>";
                             }
                             ?>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!-- Modal info -->
+            <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="infoModalLabel">FabLab & Moi (ver 2024.01a)</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h3>Changelog:</h3>
+                            <ul>
+                            <li><b>Version initiale</b></li>
+                            <p>Toutes les fonctionalités initialement prévu sont disponible.</p>
+                            <li><b>Ajout de la fonctionalité "J'y suis!"</b></li>
+                            <p>Cette fonctionalité permet de savoir qui est actuellement présent au FabLab, la liste se réinitialise toutes les 1h.</p>
+                            </ul>
+                            
+
+                            <h3>Crédits:</h3>
+                            <p>Codée par Enzo DURAN (T-NSI23/24), Luigi Dupont Gallon (T-NSI23/24) et Pauline Labadie (T-NSI23/24)</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
