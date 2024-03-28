@@ -40,6 +40,20 @@ if (mysqli_num_rows($result_motd) > 0) {
     // Si aucun MOTD n'est disponible, laisser la variable $motd vide
     $motd = "Aucun message du jour";
 }
+
+
+// Récupérer l'activité depuis la base de données
+$sql_activity = "SELECT activity FROM infofablab";
+$result_activity = mysqli_query($link, $sql_activity);
+
+// Vérifier s'il y a des résultats
+if (mysqli_num_rows($result_activity) > 0) {
+    $row_activity = mysqli_fetch_assoc($result_activity);
+    $activity = $row_activity["activity"];
+} else {
+    // Si aucune activité n'est disponible
+    $activity = "Aucune activité";
+}
 ?>
 
 <!DOCTYPE html>
@@ -108,6 +122,10 @@ if (mysqli_num_rows($result_motd) > 0) {
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Ouverture
                                 <span class="badge <?php echo $badge_class; ?>"><?php echo $ouverture_text; ?></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Activité
+                                <span class="badge bg-secondary"><?php echo $activity; ?></span>
                             </li>
                             <!-- Ajoutez d'autres éléments de liste si nécessaire -->
                         </ul>

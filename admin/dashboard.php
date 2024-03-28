@@ -137,72 +137,72 @@ if (mysqli_num_rows($result_motd) > 0) {
                         <h5 class="card-title">Message du jour</h5>
                         <p class="card-text"><?php echo $motd; ?></p>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editMotdModal">
-    Modifier le MOTD
-</button>
+                        Modifier le MOTD
+                        </button>
 
-<!-- Modal pour modifier le MOTD -->
-<div class="modal fade" id="editMotdModal" tabindex="-1" aria-labelledby="editMotdModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editMotdModalLabel">Modifier le MOTD</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Formulaire pour modifier le MOTD -->
-                <form id="editMotdForm">
-                    <div class="mb-3">
-                        <label for="motdTextarea" class="form-label">Nouveau MOTD</label>
-                        <textarea class="form-control" id="motdTextarea" rows="3"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary" id="saveMotdBtn">Enregistrer les modifications</button>
-            </div>
-        </div>
-    </div>
-</div>
+                        <!-- Modal pour modifier le MOTD -->
+                        <div class="modal fade" id="editMotdModal" tabindex="-1" aria-labelledby="editMotdModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editMotdModalLabel">Modifier le MOTD</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Formulaire pour modifier le MOTD -->
+                                        <form id="editMotdForm">
+                                            <div class="mb-3">
+                                                <label for="motdTextarea" class="form-label">Nouveau MOTD</label>
+                                                <textarea class="form-control" id="motdTextarea" rows="3"></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                        <button type="button" class="btn btn-primary" id="saveMotdBtn">Enregistrer les modifications</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-<script>
-    $(document).ready(function() {
-        // Intercepter le clic sur le bouton "Modifier le MOTD"
-        $('#editMotdModal').on('show.bs.modal', function(event) {
-            // Charger le MOTD actuel dans le formulaire
-            $.ajax({
-                url: 'get_motd.php', // Script PHP pour récupérer le MOTD depuis la base de données
-                type: 'GET',
-                success: function(response) {
-                    $('#motdTextarea').val(response);
-                },
-                error: function() {
-                    alert('Une erreur s\'est produite lors du chargement du MOTD.');
-                }
-            });
-        });
+                        <script>
+                            $(document).ready(function() {
+                                // Intercepter le clic sur le bouton "Modifier le MOTD"
+                                $('#editMotdModal').on('show.bs.modal', function(event) {
+                                    // Charger le MOTD actuel dans le formulaire
+                                    $.ajax({
+                                        url: 'get_motd.php', // Script PHP pour récupérer le MOTD depuis la base de données
+                                        type: 'GET',
+                                        success: function(response) {
+                                            $('#motdTextarea').val(response);
+                                        },
+                                        error: function() {
+                                            alert('Une erreur s\'est produite lors du chargement du MOTD.');
+                                        }
+                                    });
+                                });
 
-        // Intercepter le clic sur le bouton "Enregistrer les modifications"
-        $('#saveMotdBtn').click(function() {
-            var newMotd = $('#motdTextarea').val();
-            $.ajax({
-                url: 'update_motd.php', // Script PHP pour mettre à jour le MOTD dans la base de données
-                type: 'POST',
-                data: {
-                    motd: newMotd
-                },
-                success: function(response) {
-                    $('#editMotdModal').modal('hide');
-                    // Actualiser la page ou effectuer d'autres actions après la mise à jour du MOTD
-                },
-                error: function() {
-                    alert('Une erreur s\'est produite lors de la mise à jour du MOTD.');
-                }
-            });
-        });
-    });
-</script>
-                    </div>
+                                // Intercepter le clic sur le bouton "Enregistrer les modifications"
+                                $('#saveMotdBtn').click(function() {
+                                    var newMotd = $('#motdTextarea').val();
+                                    $.ajax({
+                                        url: 'update_motd.php', // Script PHP pour mettre à jour le MOTD dans la base de données
+                                        type: 'POST',
+                                        data: {
+                                            motd: newMotd
+                                        },
+                                        success: function(response) {
+                                            $('#editMotdModal').modal('hide');
+                                            // Actualiser la page ou effectuer d'autres actions après la mise à jour du MOTD
+                                        },
+                                        error: function() {
+                                            alert('Une erreur s\'est produite lors de la mise à jour du MOTD.');
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+                                            </div>
                 </div>
             </div>
             <!-- Mes Compétences -->
