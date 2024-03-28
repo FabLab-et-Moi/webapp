@@ -132,10 +132,43 @@ if (mysqli_num_rows($result_activity) > 0) {
                         <!-- Ajoutez ici d'autres informations sur le FabLab si nécessaire -->
                         <a href="#" class="btn btn-success mt-3">J'y suis!</a>
                         <a href="#" class="btn btn-primary mt-3">En savoir plus</a>
-                        <a href="#" class="btn btn-primary mt-3">Horaires</a>
+                        <a href="#" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#horairesModal">Horaires</a>
                     </div>
                 </div>
             </div>
+
+            <!-- Modal pour les horaires -->
+            <div class="modal fade" id="horairesModal" tabindex="-1" aria-labelledby="horairesModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="horairesModalLabel">Horaires du FabLab</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Insérer ici les horaires récupérés depuis la base de données -->
+                            <?php
+                            // Récupérer les horaires du FabLab depuis la base de données
+                            $sql_horaires = "SELECT horaires FROM infofablab";
+                            $result_horaires = mysqli_query($link, $sql_horaires);
+
+                            // Vérifier s'il y a des résultats
+                            if (mysqli_num_rows($result_horaires) > 0) {
+                                $row_horaires = mysqli_fetch_assoc($result_horaires);
+                                $horaires = $row_horaires["horaires"];
+                                echo "<p>" . $horaires . "</p>";
+                            } else {
+                                echo "<p>Aucun horaire disponible pour le moment.</p>";
+                            }
+                            ?>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Mes Projets -->
             <div class="col-md-4 mb-4">
                 <div class="card">
