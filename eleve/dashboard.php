@@ -26,6 +26,20 @@ if (mysqli_num_rows($result) > 0) {
 // Définir la classe Bootstrap pour le badge en fonction du statut d'ouverture
 $badge_class = ($ouverture == 1) ? 'bg-success' : 'bg-danger';
 $ouverture_text = ($ouverture == 1) ? 'Ouvert' : 'Fermé';
+
+
+// Récupérer le MOTD depuis la base de données
+$sql_motd = "SELECT motd FROM infofablab";
+$result_motd = mysqli_query($link, $sql_motd);
+
+// Vérifier s'il y a des résultats
+if (mysqli_num_rows($result_motd) > 0) {
+    $row_motd = mysqli_fetch_assoc($result_motd);
+    $motd = $row_motd["motd"];
+} else {
+    // Si aucun MOTD n'est disponible, laisser la variable $motd vide
+    $motd = "Aucun message du jour";
+}
 ?>
 
 <!DOCTYPE html>
@@ -75,6 +89,9 @@ $ouverture_text = ($ouverture == 1) ? 'Ouvert' : 'Fermé';
             </form>
         </div>
     </nav>
+    
+    <!-- MOTD -->
+    <div class="alert alert-secondary" role="alert"><?php echo $motd;?><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
 
     <h1 class="my-5">Bonjour, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b> et bienvenue dans votre espace FabLab.</h1>
 
