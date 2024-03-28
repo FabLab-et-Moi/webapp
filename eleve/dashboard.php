@@ -130,6 +130,7 @@ if (mysqli_num_rows($result_activity) > 0) {
                             <!-- Ajoutez d'autres éléments de liste si nécessaire -->
                         </ul>
                         <!-- Ajoutez ici d'autres informations sur le FabLab si nécessaire -->
+                        <a href="#" class="btn btn-success mt-3">J'y suis!</a>
                         <a href="#" class="btn btn-primary mt-3">En savoir plus</a>
                         <a href="#" class="btn btn-primary mt-3">Horaires</a>
                     </div>
